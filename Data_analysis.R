@@ -494,24 +494,24 @@ for (i in 1: nrow(LISTEN4_lzstar_flagged)){
 
 ########### (3) Plot ##########
 
-#plot 4 path together (with normal distribution)
+#plot 4 path together (with standard normal distribution)
 par(mfrow=c(2,4))
 #reading
 p1 <- plot(READ1_lzstar, Type="Both", Blvl=.05, CIlvl = 0.95, cutoff.obj = READ1_lzstar_cutoff, 
            title = "Path 1, Reading",Xcex=1.1, Tcex=1.3,Xlab=expression(italic(l)[italic(z)]*"*"*" , (cutoff=-1.64)"))
-curve(dnorm(x, mean=mean(READ1_lzstar[["PFscores"]][["PFscores"]]), sd=sd(READ1_lzstar[["PFscores"]][["PFscores"]])), 
+curve(dnorm(x, mean=0, sd=1), 
       lwd=2, add=TRUE, yaxt="n", lty= "dashed")
 p2 <- plot(READ2_lzstar, Type="Both", Blvl=.05, CIlvl = 0.95, cutoff.obj = READ2_lzstar_cutoff, 
            title = "Path 2, Reading",Xcex=1.1, Tcex=1.3,Xlab=expression(italic(l)[italic(z)]*"*"*" , (cutoff=-1.64)"))
-curve(dnorm(x, mean=mean(READ2_lzstar[["PFscores"]][["PFscores"]]), sd=sd(READ2_lzstar[["PFscores"]][["PFscores"]])), 
+curve(dnorm(x, mean=0, sd=1), 
       lwd=2, add=TRUE, yaxt="n", lty= "dashed")
 p3 <- plot(READ3_lzstar, Type="Both", Blvl=.05, CIlvl = 0.95, cutoff.obj = READ3_lzstar_cutoff, 
            title = "Path 3, Reading",Xcex=1.1, Tcex=1.3,Xlab=expression(italic(l)[italic(z)]*"*"*" , (cutoff=-1.64)"))
-curve(dnorm(x, mean=mean(READ3_lzstar[["PFscores"]][["PFscores"]]), sd=sd(READ3_lzstar[["PFscores"]][["PFscores"]])), 
+curve(dnorm(x, mean=0, sd=1), 
       lwd=2, add=TRUE, yaxt="n", lty= "dashed")
 p4 <- plot(READ4_lzstar, Type="Both", Blvl=.05, CIlvl = 0.95, cutoff.obj = READ4_lzstar_cutoff, 
            title = "Path 4, Reading",ylim=c(0,0.4),Xcex=1.1, Tcex=1.3,Xlab=expression(italic(l)[italic(z)]*"*"*" , (cutoff=-1.64)"))
-curve(dnorm(x, mean=mean(READ4_lzstar[["PFscores"]][["PFscores"]]), sd=sd(READ4_lzstar[["PFscores"]][["PFscores"]])), 
+curve(dnorm(x, mean=0, sd=1), 
       lwd=2, add=TRUE, yaxt="n", lty= "dashed")
 #listening
 p5 <- plot(LISTEN1_lzstar, Type="Both", Blvl=.05, CIlvl = 0.95, cutoff.obj = LISTEN1_lzstar_cutoff, 
@@ -521,17 +521,17 @@ curve(dnorm(x, mean=mean(LISTEN1_lzstar[["PFscores"]][["PFscores"]]), sd=sd(LIST
 
 p6 <- plot(LISTEN2_lzstar, Type="Both", Blvl=.05, CIlvl = 0.95, cutoff.obj = LISTEN2_lzstar_cutoff, 
            title = "Path 2,Listening",Xcex=1.1, Tcex=1.3,Xlab=expression(italic(l)[italic(z)]*"*"*" , (cutoff=-1.64)"))
-curve(dnorm(x, mean=mean(LISTEN2_lzstar[["PFscores"]][["PFscores"]]), sd=sd(LISTEN2_lzstar[["PFscores"]][["PFscores"]])), 
+curve(dnorm(x, mean=0, sd=1), 
       lwd=2, add=TRUE, yaxt="n", lty= "dashed")
 
 p7 <- plot(LISTEN3_lzstar, Type="Both", Blvl=.05, CIlvl = 0.95, cutoff.obj = LISTEN3_lzstar_cutoff, 
            title = "Path 3,Listening",Xcex=1.1, Tcex=1.3,Xlab=expression(italic(l)[italic(z)]*"*"*" , (cutoff=-1.64)"))
-curve(dnorm(x, mean=mean(LISTEN3_lzstar[["PFscores"]][["PFscores"]]), sd=sd(LISTEN3_lzstar[["PFscores"]][["PFscores"]])), 
+curve(dnorm(x, mean=0, sd=1), 
       lwd=2, add=TRUE, yaxt="n", lty= "dashed")
 
 p8 <- plot(LISTEN4_lzstar, Type="Both", Blvl=.05, CIlvl = 0.95, cutoff.obj = LISTEN4_lzstar_cutoff, 
            title = "Path 4,Listening",Xcex=1.1, Tcex=1.3,Xlab=expression(italic(l)[italic(z)]*"*"*" , (cutoff=-1.64)"))
-curve(dnorm(x, mean=mean(LISTEN4_lzstar[["PFscores"]][["PFscores"]]), sd=sd(LISTEN4_lzstar[["PFscores"]][["PFscores"]])), 
+curve(dnorm(x, mean=0, sd=1), 
       lwd=2, add=TRUE, yaxt="n", lty= "dashed")
 
 ############3.2 SHa(1/2)*   ############
@@ -791,7 +791,7 @@ p1_SHa12 <- ggplot(READ1_SHa12_PF, aes(x = SHa12))+
   geom_histogram(aes(y = ..density..),bins = 15,fill = "lightblue",colour= "black",) +
   geom_density()+
   geom_vline(xintercept = 1.64, lwd = 1)+
-  stat_function(fun = dnorm, args = list(mean=mean(READ1_SHa12_PF$SHa12), sd=sd(READ1_SHa12_PF$SHa12)), lty="dashed")+
+  stat_function(fun = dnorm, args = list(mean=0, sd=1), lty="dashed")+
   ggtitle("Path 1")+ 
   xlab(expression(italic(SHa(1/2))*"*"*", (cutoff=1.64)"))+
   theme_bw()+
@@ -808,7 +808,7 @@ p2_SHa12 <- ggplot(READ2_SHa12_PF, aes(x = SHa12))+
   geom_histogram(aes(y = ..density..),bins = 15,fill = "lightblue",colour= "black",) +
   geom_density()+
   geom_vline(xintercept = 1.64, lwd = 1)+
-  stat_function(fun = dnorm, args = list(mean=mean(READ2_SHa12_PF$SHa12), sd=sd(READ2_SHa12_PF$SHa12)), lty="dashed")+
+  stat_function(fun = dnorm, args = list(mean=0, sd=1), lty="dashed")+
   ggtitle("Path 2")+ 
   xlab(expression(italic(SHa(1/2))*"*"*", (cutoff=1.64)"))+
   theme_bw()+
@@ -825,7 +825,7 @@ p3_SHa12 <- ggplot(READ3_SHa12_PF, aes(x = SHa12))+
   geom_histogram(aes(y = ..density..),bins = 15,fill = "lightblue",colour= "black",) +
   geom_density()+
   geom_vline(xintercept = 1.64, lwd = 1)+
-  stat_function(fun = dnorm, args = list(mean=mean(READ3_SHa12_PF$SHa12), sd=sd(READ3_SHa12_PF$SHa12)), lty="dashed")+
+  stat_function(fun = dnorm, args = list(mean=0, sd=1), lty="dashed")+
   ggtitle("Path 3")+ 
   xlab(expression(italic(SHa(1/2))*"*"*", (cutoff=1.64)"))+
   theme_bw()+
@@ -842,7 +842,7 @@ p4_SHa12 <- ggplot(READ4_SHa12_PF, aes(x = SHa12))+
   geom_histogram(aes(y = ..density..),bins = 15,fill = "lightblue",colour= "black",) +
   geom_density()+
   geom_vline(xintercept = 1.64, lwd = 1)+
-  stat_function(fun = dnorm, args = list(mean=mean(READ4_SHa12_PF$SHa12), sd=sd(READ4_SHa12_PF$SHa12)), lty="dashed")+
+  stat_function(fun = dnorm, args = list(mean=0, sd=1), lty="dashed")+
   ggtitle("Path 4")+ 
   xlab(expression(italic(SHa(1/2))*"*"*", (cutoff=1.64)"))+
   theme_bw()+
@@ -859,7 +859,7 @@ p1_SHb3 <- ggplot(READ1_SHb3_PF, aes(x = SHb3))+
   geom_histogram(aes(y = ..density..),bins = 15,fill = "lightblue",colour= "black",) +
   geom_density()+
   geom_vline(xintercept = 1.64, lwd = 1)+
-  stat_function(fun = dnorm, args = list(mean=mean(READ1_SHb3_PF$SHb3), sd=sd(READ1_SHb3_PF$SHb3)), lty="dashed")+
+  stat_function(fun = dnorm, args = list(mean=0, sd=1), lty="dashed")+
   xlab(expression(italic(SHb(3))*"*"*", (cutoff=1.64)"))+
   theme_bw()+
   theme(plot.title=element_text(hjust = 0.5, size=20),
@@ -875,7 +875,7 @@ p2_SHb3 <- ggplot(READ2_SHb3_PF, aes(x = SHb3))+
   geom_histogram(aes(y = ..density..),bins = 15,fill = "lightblue",colour= "black",) +
   geom_density()+
   geom_vline(xintercept = 1.64, lwd = 1)+
-  stat_function(fun = dnorm, args = list(mean=mean(READ2_SHb3_PF$SHb3), sd=sd(READ2_SHb3_PF$SHb3)), lty="dashed")+
+  stat_function(fun = dnorm, args = list(mean=0, sd=1), lty="dashed")+
   xlab(expression(italic(SHb(3))*"*"*", (cutoff=1.64)"))+
   theme_bw()+
   theme(plot.title=element_text(hjust = 0.5, size=20),
@@ -891,7 +891,7 @@ p3_SHb3 <- ggplot(READ3_SHb3_PF, aes(x = SHb3))+
   geom_histogram(aes(y = ..density..),bins = 15,fill = "lightblue",colour= "black",) +
   geom_density()+
   geom_vline(xintercept = 1.64, lwd = 1)+
-  stat_function(fun = dnorm, args = list(mean=mean(READ3_SHb3_PF$SHb3), sd=sd(READ3_SHb3_PF$SHb3)), lty="dashed")+
+  stat_function(fun = dnorm, args = list(mean=0, sd=1), lty="dashed")+
   xlab(expression(italic(SHb(3))*"*"*", (cutoff=1.64)"))+
   theme_bw()+
   theme(plot.title=element_text(hjust = 0.5, size=20),
@@ -907,7 +907,7 @@ p4_SHb3 <- ggplot(READ4_SHb3_PF, aes(x = SHb3))+
   geom_histogram(aes(y = ..density..),bins = 15,fill = "lightblue",colour= "black",) +
   geom_density()+
   geom_vline(xintercept = 1.64, lwd = 1)+
-  stat_function(fun = dnorm, args = list(mean=mean(READ4_SHb3_PF$SHb3), sd=sd(READ4_SHb3_PF$SHb3)), lty="dashed")+
+  stat_function(fun = dnorm, args = list(mean=0, sd=1), lty="dashed")+
   xlab(expression(italic(SHb(3))*"*"*", (cutoff=1.64)"))+
   theme_bw()+
   theme(plot.title=element_text(hjust = 0.5, size=20),
@@ -926,7 +926,7 @@ p1_SHa12_L <- ggplot(LISTEN1_SHa12_PF, aes(x = SHa12))+
   geom_histogram(aes(y = ..density..),bins = 15,fill = "lightblue",colour= "black",) +
   geom_density()+
   geom_vline(xintercept = 1.64, lwd = 1)+
-  stat_function(fun = dnorm, args = list(mean=mean(LISTEN1_SHa12_PF$SHa12), sd=sd(LISTEN1_SHa12_PF$SHa12)), lty="dashed")+
+  stat_function(fun = dnorm, args = list(mean=0, sd=1), lty="dashed")+
   ggtitle("Path 1")+ 
   xlab(expression(italic(SHa(1/2))*"*"*", (cutoff=1.64)"))+
   theme_bw()+
@@ -943,7 +943,7 @@ p2_SHa12_L <- ggplot(LISTEN2_SHa12_PF, aes(x = SHa12))+
   geom_histogram(aes(y = ..density..),bins = 15,fill = "lightblue",colour= "black",) +
   geom_density()+
   geom_vline(xintercept = 1.64, lwd = 1)+
-  stat_function(fun = dnorm, args = list(mean=mean(LISTEN2_SHa12_PF$SHa12), sd=sd(LISTEN2_SHa12_PF$SHa12)), lty="dashed")+
+  stat_function(fun = dnorm, args = list(mean=0, sd=1), lty="dashed")+
   ggtitle("Path 2")+ 
   xlab(expression(italic(SHa(1/2))*"*"*", (cutoff=1.64)"))+
   theme_bw()+
@@ -960,7 +960,7 @@ p3_SHa12_L <- ggplot(LISTEN3_SHa12_PF, aes(x = SHa12))+
   geom_histogram(aes(y = ..density..),bins = 15,fill = "lightblue",colour= "black",) +
   geom_density()+
   geom_vline(xintercept = 1.64, lwd = 1)+
-  stat_function(fun = dnorm, args = list(mean=mean(LISTEN3_SHa12_PF$SHa12), sd=sd(LISTEN3_SHa12_PF$SHa12)), lty="dashed")+
+  stat_function(fun = dnorm, args = list(mean=0, sd=1), lty="dashed")+
   ggtitle("Path 3")+ 
   xlab(expression(italic(SHa(1/2))*"*"*", (cutoff=1.64)"))+
   theme_bw()+
@@ -977,7 +977,7 @@ p4_SHa12_L <- ggplot(LISTEN4_SHa12_PF, aes(x = SHa12))+
   geom_histogram(aes(y = ..density..),bins = 15,fill = "lightblue",colour= "black",) +
   geom_density()+
   geom_vline(xintercept = 1.64, lwd = 1)+
-  stat_function(fun = dnorm, args = list(mean=mean(LISTEN4_SHa12_PF$SHa12), sd=sd(LISTEN4_SHa12_PF$SHa12)), lty="dashed")+
+  stat_function(fun = dnorm, args = list(mean=0, sd=1), lty="dashed")+
   ggtitle("Path 4")+ 
   xlab(expression(italic(SHa(1/2))*"*"*", (cutoff=1.64)"))+
   theme_bw()+
@@ -994,7 +994,7 @@ p1_SHb3_L <- ggplot(LISTEN1_SHb3_PF, aes(x = SHb3))+
   geom_histogram(aes(y = ..density..),bins = 15,fill = "lightblue",colour= "black",) +
   geom_density()+
   geom_vline(xintercept = 1.64, lwd = 1)+
-  stat_function(fun = dnorm, args = list(mean=mean(LISTEN1_SHb3_PF$SHb3), sd=sd(LISTEN1_SHb3_PF$SHb3)), lty="dashed")+
+  stat_function(fun = dnorm, args = list(mean=0, sd=1), lty="dashed")+
   xlab(expression(italic(SHb(3))*"*"*", (cutoff=1.64)"))+
   theme_bw()+
   theme(plot.title=element_text(hjust = 0.5, size=20),
@@ -1010,7 +1010,7 @@ p2_SHb3_L <- ggplot(LISTEN2_SHb3_PF, aes(x = SHb3))+
   geom_histogram(aes(y = ..density..),bins = 15,fill = "lightblue",colour= "black",) +
   geom_density()+
   geom_vline(xintercept = 1.64, lwd = 1)+
-  stat_function(fun = dnorm, args = list(mean=mean(LISTEN2_SHb3_PF$SHb3), sd=sd(LISTEN2_SHb3_PF$SHb3)), lty="dashed")+
+  stat_function(fun = dnorm, args = list(mean=0, sd=1), lty="dashed")+
   xlab(expression(italic(SHb(3))*"*"*", (cutoff=1.64)"))+
   theme_bw()+
   theme(plot.title=element_text(hjust = 0.5, size=20),
@@ -1026,7 +1026,7 @@ p3_SHb3_L <- ggplot(LISTEN3_SHb3_PF, aes(x = SHb3))+
   geom_histogram(aes(y = ..density..),bins = 15,fill = "lightblue",colour= "black",) +
   geom_density()+
   geom_vline(xintercept = 1.64, lwd = 1)+
-  stat_function(fun = dnorm, args = list(mean=mean(LISTEN3_SHb3_PF$SHb3), sd=sd(LISTEN3_SHb3_PF$SHb3)), lty="dashed")+
+  stat_function(fun = dnorm, args = list(mean=0, sd=1), lty="dashed")+
   xlab(expression(italic(SHb(3))*"*"*", (cutoff=1.64)"))+
   theme_bw()+
   theme(plot.title=element_text(hjust = 0.5, size=20),
@@ -1042,7 +1042,7 @@ p4_SHb3_L <- ggplot(LISTEN4_SHb3_PF, aes(x = SHb3))+
   geom_histogram(aes(y = ..density..),bins = 15,fill = "lightblue",colour= "black",) +
   geom_density()+
   geom_vline(xintercept = 1.64, lwd = 1)+
-  stat_function(fun = dnorm, args = list(mean=mean(LISTEN4_SHb3_PF$SHb3), sd=sd(LISTEN4_SHb3_PF$SHb3)), lty="dashed")+
+  stat_function(fun = dnorm, args = list(mean=0, sd=1), lty="dashed")+
   xlab(expression(italic(SHb(3))*"*"*", (cutoff=1.64)"))+
   theme_bw()+
   theme(plot.title=element_text(hjust = 0.5, size=20),
